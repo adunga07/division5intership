@@ -1,5 +1,5 @@
 import './App.css'
-import SideBar from './components/SideBar'
+import WebCam from './components/WebCam'
 
 function App() {
 
@@ -7,7 +7,7 @@ function App() {
 
   return (
     <>
-     <SideBar />
+     <WebCam />
     </>
   )
 }

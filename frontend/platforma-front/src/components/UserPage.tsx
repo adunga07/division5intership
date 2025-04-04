@@ -7,7 +7,7 @@ const UserPage = () => {
     <div>
       <UserNavBar />
       <div className="w-full flex">
-        <SideBar />
+        <SideBar link1="My questions" link2="My answers" link3="My profile" />
         <Content />
       </div>
     </div>

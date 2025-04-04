@@ -1,6 +1,10 @@
-console.log("Hello from me");
+const express = require("express");
+const { Client } = require("pg");
 
+const app = express();
+app.use(express.json());
+const PORT = process.env.PORT || 3000;
 
-const app = require("express");
-
-const sql = require("mysql2/promise");
+app.listen(PORT, () => {
+  console.log(`Server is running on port:${PORT}`);
+});

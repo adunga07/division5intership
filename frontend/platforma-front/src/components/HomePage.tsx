@@ -5,7 +5,7 @@ import Footer from "./Footer"
 const HomePage = () => {
   return (
     <div className="w-full">
-        <NavBar />
+        <NavBar link="Register" link1="Login" link2="Continue as guest"/>
         <section className="w-full items-center justify-center flex flex-col p-3 m-0
         border-0 border-black rounded-2xl shadow-2xl">
           <h1 className="text-black text-2xl">Welcome to our Q&A interactive platfrom</h1>

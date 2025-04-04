@@ -12,3 +12,98 @@ datasource db {
   provider = "postgresql"
   url      = env("DATABASE_URL")
 }
+
+enum Role {
+  ADMIN
+  QUESTIONAIRE //Can create surveys.
+  USER //Answers all the surevy questions and can watch all the surveys.
+}
+
+model User {
+  username String @id @unique
+  name String 
+  surname String
+  email String @unique
+  password String
+  role Role @default(USER)
+  strikes Int @default(0)
+  createdAt DateTime @default(now())
+
+  //One to many realationship with Survey
+  surveys Survey[]
+  //One to many realationship with Question
+  questions Question[]
+  //One to many realationship with Answer
+  answers Answer[]
+  //One to many realationship with VideoSurvey
+  videoSurveys VideoSurvey[]
+
+  @@map("Users")
+}
+
+model Survey {
+  id Int @id @default(autoincrement())
+  title String
+  description String
+  createdAt DateTime @default(now())
+
+  //One to many realationship with Question
+  questions Question[]
+  //User ID for the author of the survey.
+  authorID String
+  author User @relation(fields: [authorID], references: [username])
+  //Relationship with Answer
+  answers Answer[]
+
+  @@map("Surveys")
+}
+
+model Question{
+  id Int @id @default(autoincrement())
+  question String
+  date DateTime @default(now())
+  //Relationship with Survey
+  surveyID Int
+  survey Survey @relation(fields: [surveyID], references: [id])
+  //Relationship with Answer one to many.
+  answers Answer[]
+  //Relationship with User
+  userID String
+  user User @relation(fields: [userID], references: [username])
+
+  @@map("Questions")
+}
+
+model Answer{
+  id Int @id @default(autoincrement())
+  answer String
+
+  //Relationship with Question
+  questionID Int
+  question Question @relation(fields: [questionID], references: [id])
+  //Relationship with User
+  userID String
+  user User @relation(fields: [userID], references: [username])
+  //Relationship with Survey 
+  surveyID Int
+  survey Survey @relation(fields: [surveyID], references: [id])
+
+  @@map("Answers")
+}
+
+model VideoSurvey{
+  id Int @id @default(autoincrement())
+  URL String
+
+  //Relationship with Survey
+  surveyID Int
+
+  //RelationShip with User
+  userID String
+  user User @relation(fields: [userID], references: [username])
+
+  @@map("VideoSurveys")
+  //Mos harro per te bo migrations per ndryshimet e databazes.
+}
+
+
