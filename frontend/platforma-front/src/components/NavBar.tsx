@@ -20,7 +20,7 @@ const NavBar = (
                 <li className="flex items-center justify-center">
                     <Link className="m-2.5" to={"/register"}>{link}</Link>
                     <Link className="m-2.5" to={"/Login"}>{link1}</Link>
-                    <Link className="m-2.5" to={"/guest"}>{link2}</Link>
+                    <Link className="m-2.5" to={"#"}>{link2}</Link>
                 </li>
             </ul>
         </nav>

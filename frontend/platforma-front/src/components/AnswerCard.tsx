@@ -1,19 +1,24 @@
+import UserNavBar from "./UserNavBar"
 
 const AnswerCard = () => {
   return (
-    <div className="flex w-[90%] p-1 items-center justify-between m-3">
-            <div className="w-full bg-white flex flex-col items-start justify-evenly rounded-[35px] h-fit">
-                <p className="ml-4">Username</p>
-                <p className="m-4">This is an answer 
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Cumque ipsum, eos blanditiis temporibus id cupiditate sint delectus exercitationem, voluptate recusandae dolorem! Ab unde est voluptates ipsa, voluptate eveniet provident facere?
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Repudiandae delectus numquam eligendi libero architecto neque, excepturi perspiciatis, illum quisquam ratione repellat tempore error inventore asperiores nemo. Architecto blanditiis animi quasi.
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime quas distinctio asperiores eveniet laborum totam corrupti quod dolorum quam ipsam voluptatum id repellendus beatae, maiores ex! Temporibus harum autem atque!
-                </p>
-            </div>
-        {/* Here will be the answer button. */}
-            {/* <div className="flex w-[20%] p-2 items-center justify-end">
-                <button className="bg-[#124E66] text-white rounded-[20px] p-2 w-[90%]">Answer</button>
-            </div> */}
+    <div className="flex flex-col w-[100%] items-center justify-center">
+      <UserNavBar />
+        <div className="flex flex-col text-center items-center w-[75%] justify-center border-2 border-black
+        m-4 p-3 shadow shadow-gray-500 rounded-3xl">
+          <div className="flex flex-col w-full text-center items-center justify-center text-xl">
+            <h1 className="flex text-4xl font-bold p-3 m-4">This is the question</h1>
+            <p className="flex text-2xl p-3 m-4">This is the question description</p>
+          </div>
+        </div>
+        <div className="flex w-[75%] items-center p-2  m-12">
+          <input type="text" className="flex w-[75%] border-2 m-2 p-2 rounded-2xl" 
+          placeholder="Enter your answer here." 
+          />
+          <button className="bg-blue-400 p-2.5 rounded-2xl w-[25%] hover:bg-blue-700 cursor-pointer">
+            Answer
+          </button>
+        </div>
     </div>
   )
 }

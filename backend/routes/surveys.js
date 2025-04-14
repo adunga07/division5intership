@@ -9,3 +9,5 @@ router.get("/getSurveysByAuthorID/:id", surveyController.getSurveysByAuthorID);
 router.get("/getSurveyByID/:id", surveyController.getSurveyByID);
 router.delete("deleteSurvey/:id", surveyController.deleteSurvey);
 router.put("updateSurvey/:id", surveyController.updateSurvey);
+
+module.exports = router;

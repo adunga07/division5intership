@@ -8,7 +8,7 @@ const Login = () => {
     const redirect = (path: string) => navigate(path);
     const [showPassword, setShowPassword] = useState<boolean>(false);
     const toggleShowPassword = () => setShowPassword(!showPassword);
-    const [email, setEmail] = useState("");
+    const [email, setEmail] = useState<string>("");
     const [password, setPassword] = useState("");
     const onLogin = () => {
         console.log(email,password);

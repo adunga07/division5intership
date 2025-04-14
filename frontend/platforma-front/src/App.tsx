@@ -1,5 +1,5 @@
 import './App.css'
-import WebCam from './components/WebCam'
+import HomePage from './components/HomePage'
 
 function App() {
 
@@ -7,7 +7,7 @@ function App() {
 
   return (
     <>
-     <WebCam />
+     <HomePage />
     </>
   )
 }

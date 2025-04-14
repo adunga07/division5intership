@@ -2,19 +2,28 @@ const surveyService = require('../Services/surveysService');
 
 const createSurvey = async (req, res) => {
     try {
-        const survey = await surveyService.createSurvey(req.body);
+        const title = req.body.title;
+        const description = req.body.description;
+        const author_ID = req.body.author_ID;
+        const survey = await surveyService.createSurvey(title,description,author_ID);
+        if(survey.error){
+            return res.status(404).json({ error: survey.error });
+        }
         res.status(201).json({ message: "Survey created successfully", survey });
     }catch (error){
         return res.status(500).json({ message: "Couldn't connect to server please try again later."});
     }
 }
 
-const getAllSurveys = async (req, res) => {
+const getAllSurveys = async (req,res) => {
     try{
         const surveys = await surveyService.getAllSurveys();
+        if(surveys.error){
+            return res.status(400).json({ error: surveys.error });
+        }
         res.status(200).json(surveys);
     }catch(error){
-        return res.status(500).json({ message: "Couldn't connect to server please try again later."});
+        return res.status(500).json({ message: "Coudn't connect to the database"})
     }
 }
 
@@ -55,11 +64,12 @@ const updateSurvey = async (req, res) => {
 
 const getSurveysByAuthorID = async (req, res) => {
     try{
-        const surveys = await surveyService.getSurveysByAuthorID(req.params.id);
-        if(!surveys){
-            return res.status(404).json({ message: "Couldn't find any surveys for this author."});
+        const id = req.params.id;
+        const surveys = await surveyService.getSurveysByAuthorID(id);
+        if(surveys.error){
+            return res.status(404).json({ message: surveys.error });
         }
-        return res.status(200).json(surveys.array());
+        return res.status(200).json(surveys);
     }catch(error){
         return res.status(500).json({ message: "Couldn't connect to server please try again later."});
     }
